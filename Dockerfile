@@ -21,7 +21,7 @@ COPY routers/ routers/
 # Build
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o run main.go
 
-FROM alpine:latest
+FROM busybox:latest
 WORKDIR /
 COPY --from=builder /workspace/run .
 COPY conf/app.conf conf/app.conf
